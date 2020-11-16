@@ -1,34 +1,144 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
-const path = require("path");
 const fs = require("fs");
+const path = require("path");
+const util = require("util");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
-
+const writeFileAsync = util.promisify(fs.writeFile)
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const userPrompts [
-    {
-        type: "list",
-        message: "Please select employee position",
-        name: "position",
-        choices: ["Intern", "Engineer", "Manager"]
-    },
-    {
-        type:"",
-        message: "",
-        name: ""
-    }
-];
-inquirer.prompt(userPrompts).then(function(userData) {
-    writeToFile()
-})
+const team = []
+
+function buildTeam () {
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Please select your position within the Team",
+            name: "userPosition",
+            choices: ["Intern", "Engineer", "Manager", "Applicant"]
+        }
+    ]).then(response => {
+        switch (response.userPosition) {
+            case "Intern":
+                createIntern();
+                break;
+            case "Engineer":
+                createEngineer();
+                break;
+            case "Manager":
+                createManager();
+                break;
+            case "Applicant":
+                console.log("Thank you for your interest in the JAMESteam, but unfortunately all positions have been filled");
+                break;
+            }
+        })
+    }; 
+
+function createIntern() {
+    inquirer.prompt([
+        {
+        type: "input",
+        name: "internName",
+        message: "Please enter your first and last name"
+        },
+        {
+        type: "input",
+        name: "internId",
+        message: "Please enter your identification number"
+        },
+        {
+        type: "input",
+        name: "internEmail",
+        message: "Please enter your email address"
+        },
+        {
+        type: "input",
+        name: "internSchool",
+        message: "Please enter your Alma Mater"
+        }
+    ]).then(response => {
+        console.log(response);
+        const intern = new Intern (response.internName, response.internId, response.internEmail, response.internSchool)
+        team.push(intern)
+        buildTeam();
+    })
+}
+
+function createEngineer() {
+    inquirer.prompt([
+        {
+        type: "input",
+        name: "engineerName",
+        message: "Please enter your first and last name"
+        },
+        {
+        type: "input",
+        name: "engineerId",
+        message: "Please enter your identification number"
+        },
+        {
+        type: "input",
+        name: "engineerEmail",
+        message: "Please enter your email address"
+        },
+        {
+        type: "input",
+        name: "engineerGithub",
+        message: "Please enter your GitHub username"
+        }
+    ]).then(response => {
+        console.log(response);
+        const engineer = new Engineer (response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub)
+        team.push(engineer)
+        buildTeam();
+    })
+}
+
+function createManager() {
+    inquirer.prompt([
+        {
+        type: "input",
+        name: "managerName",
+        message: "Please enter your first and last name"
+        },
+        {
+        type: "input",
+        name: "managerId",
+        message: "Please enter your identification number"
+        },
+        {
+        type: "input",
+        name: "managerEmail",
+        message: "Please enter your email address"
+        },
+        {
+        type: "input",
+        name: "managerOffice",
+        message: "Please enter your designated office number"
+        }
+    ]).then(response => {
+        console.log(response);
+        const manager = new Manager (response.managerName, response.managerId, response.managerEmail, response.managerOffice)
+        team.push(manager)
+        buildTeam();
+    })
+}
+
+module.exports = team
+
+buildTeam();
+// inquirer.prompt(userPrompts).then(function(userData) {
+//     writeToFile()
+// })
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
