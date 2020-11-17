@@ -11,7 +11,7 @@ test("Can set name via constructor arguments", () => {
   expect(e.name).toBe(name);
 });
 
-test("Can set id via constructor argument", () => {
+test("Can set identifier via constructor argument", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);
   expect(e.identifier).toBe(testValue);
@@ -29,7 +29,7 @@ test("Can get name via promptName()", () => {
   expect(e.promptName()).toBe(testValue);
 });
 
-test("Can get id via promptIdentifier()", () => {
+test("Can get identifier via promptIdentifier()", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);
   expect(e.promptIdentifier()).toBe(testValue);

@@ -27,7 +27,7 @@ function buildTeam () {
             case "Manager":
                 createManager();
                 break;
-            case "Applicant":
+            case "All Positions Added":
                 console.log("Thank you for your interest in the JAMESteam, but unfortunately all positions have been filled");
                 escapeLoop();
                 break;
@@ -53,7 +53,7 @@ function createIntern() {
         },
         {
         type: "input",
-        name: "internId",
+        name: "internIdentifier",
         message: "Please enter your identification number"
         },
         {
@@ -83,7 +83,7 @@ function createEngineer() {
         },
         {
         type: "input",
-        name: "engineerId",
+        name: "engineerIdentifier",
         message: "Please enter your identification number"
         },
         {
@@ -113,7 +113,7 @@ function createManager() {
         },
         {
         type: "input",
-        name: "managerId",
+        name: "managerIdentifier",
         message: "Please enter your identification number"
         },
         {
