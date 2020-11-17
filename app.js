@@ -49,7 +49,7 @@ function createIntern() {
         {
         type: "input",
         name: "internName",
-        message: "Please enter your first and last name"
+        message: "Please enter your first name"
         },
         {
         type: "input",
@@ -79,7 +79,7 @@ function createEngineer() {
         {
         type: "input",
         name: "engineerName",
-        message: "Please enter your first and last name"
+        message: "Please enter your first name"
         },
         {
         type: "input",
@@ -109,7 +109,7 @@ function createManager() {
         {
         type: "input",
         name: "managerName",
-        message: "Please enter your first and last name"
+        message: "Please enter your first name"
         },
         {
         type: "input",
