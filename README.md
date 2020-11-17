@@ -18,6 +18,6 @@ NPM Dependencies (fileshare, path, etc)
 - [GitHub](https://github.com/jamescbaldwin/Template-Engine)
 
 #### Contact Information
-```For questions, insights, or general contact, please email James at jamescbaldwin@gmail.com. Or contact him via LinkedIn, Facebook, or Instagram!```
+```For questions, insights, or general contact, please email James at jamescbaldwin@gmail.com. Or contact him via via social media (jamescbaldwin)!```
 
 

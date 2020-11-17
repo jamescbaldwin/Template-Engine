@@ -6,14 +6,14 @@ test("Can set school via constructor", () => {
   expect(e.school).toBe(testValue);
 });
 
-test("getRole() should return \"Intern\"", () => {
+test("promptPosition() should return \"Intern\"", () => {
   const testValue = "Intern";
   const e = new Intern("Foo", 1, "test@test.com", "UCLA");
-  expect(e.getRole()).toBe(testValue);
+  expect(e.promptPosition()).toBe(testValue);
 });
 
-test("Can get school via getSchool()", () => {
+test("Can get school via promptSchool()", () => {
   const testValue = "UCLA";
   const e = new Intern("Foo", 1, "test@test.com", testValue);
-  expect(e.getSchool()).toBe(testValue);
+  expect(e.promptSchool()).toBe(testValue);
 });
