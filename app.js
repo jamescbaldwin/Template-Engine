@@ -6,7 +6,10 @@ const render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const team = []
+// const devTeam = []
+// const adminTeam = []
+// const team = (devTeam + adminTeam)
+const team =[]
 
 function buildTeam () {
     inquirer.prompt([
@@ -28,7 +31,7 @@ function buildTeam () {
                 createManager();
                 break;
             case "All Positions Added":
-                console.log("Thank you for your interest in the JAMESteam, but unfortunately all positions have been filled");
+                console.log("Thank you for adding your team!");
                 escapeLoop();
                 break;
             }
@@ -37,7 +40,7 @@ function buildTeam () {
 
 function escapeLoop() {
     var output = render(team);
-    fs.writeFileSync("./output/index.html", output, function (err) {
+    fs.writeFileSync("./output/team.html", output, function (err) {
         if (err) {
             throw err
         }
@@ -67,8 +70,7 @@ function createIntern() {
         message: "Please enter your Alma Mater"
         }
     ]).then(response => {
-        console.log(response);
-        const intern = new Intern (response.internName, response.internId, response.internEmail, response.internSchool)
+        const intern = new Intern (response.internName, response.internIdentifier, response.internEmail, response.internSchool)
         team.push(intern)
         buildTeam();
     })
@@ -97,8 +99,7 @@ function createEngineer() {
         message: "Please enter your GitHub username"
         }
     ]).then(response => {
-        console.log(response);
-        const engineer = new Engineer (response.engineerName, response.engineerId, response.engineerEmail, response.engineerGithub)
+        const engineer = new Engineer (response.engineerName, response.engineerIdentifier, response.engineerEmail, response.engineerGithub)
         team.push(engineer)
         buildTeam();
     })
@@ -127,13 +128,14 @@ function createManager() {
         message: "Please enter your designated office number"
         }
     ]).then(response => {
-        console.log(response);
-        const manager = new Manager (response.managerName, response.managerId, response.managerEmail, response.managerOffice)
+        const manager = new Manager (response.managerName, response.managerIdentifier, response.managerEmail, response.managerOffice)
         team.push(manager)
         buildTeam();
     })
 }
 
 module.exports = team
+// module.exports = adminTeam
+// module.exports = devTeam
 
 buildTeam();
