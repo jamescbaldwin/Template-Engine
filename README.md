@@ -15,7 +15,7 @@ NPM Dependencies (fileshare, jest, etc.)
 ```
 
 ## LINKS
-- [Video Tutorial](https://googledrive.com)
+- [Video Tutorial](https://drive.google.com/file/d/1BbKxussuOPGQAjRN2Ez9fDDoogBdsqHm/view)
 - [GitHub](https://github.com/jamescbaldwin/Template-Engine)
 
 #### Contact Information

@@ -6,9 +6,6 @@ const render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// const devTeam = []
-// const adminTeam = []
-// const team = (devTeam + adminTeam)
 const team =[]
 
 function buildTeam () {
@@ -133,9 +130,5 @@ function createManager() {
         buildTeam();
     })
 }
-
-module.exports = team
-// module.exports = adminTeam
-// module.exports = devTeam
 
 buildTeam();
